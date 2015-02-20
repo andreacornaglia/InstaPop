@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
@@ -36,14 +37,17 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
         TextView tvLikes = (TextView) convertView.findViewById(R.id.tvLikes);
         ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.ivPhoto);
+        ImageView ivUserPhoto = (ImageView) convertView.findViewById(R.id.ivUserPhoto);
         //Insert the model data into each of the views
         tvCaption.setText(photo.caption);
         tvUsername.setText(photo.username);
-        tvLikes.setText(Integer.toString(photo.likesCount));
+        String likesCountF = NumberFormat.getInstance().format(photo.likesCount);
+        tvLikes.setText(likesCountF+" Likes");
         //Clear out the imageView
         ivPhoto.setImageResource(0);
         // Insert the image using Picasso
         Picasso.with(getContext()).load(photo.imageURL).into(ivPhoto);
+        Picasso.with(getContext()).load(photo.userURL).into(ivUserPhoto);
         //Return the created items as a view
         return convertView;
     }

@@ -1,23 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/tvUsername"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/background">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:gravity="center_vertical"
+        android:id="@+id/userLayout"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp">
+        <FrameLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/FramePhoto">
+            <ImageView
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/ivUserPhoto"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/stencil"/>
+        </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:textColor="@color/accent"
+            android:text="New Text"
+            android:id="@+id/tvUsername"/>
+    </LinearLayout>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ivPhoto"
-        android:layout_below="@+id/tvUsername"
+        android:layout_below="@+id/userLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
@@ -25,6 +48,7 @@
         android:layout_marginBottom="10dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -37,7 +38,6 @@ public class PhotosActivity extends ActionBarActivity {
         lvPhotos.setAdapter(aPhotos);
         //Fetch the photos
         fetchPopularPhotos();
-
     }
 
     public void fetchPopularPhotos(){
@@ -68,6 +68,8 @@ public class PhotosActivity extends ActionBarActivity {
                         photo.imageURL = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
                         //likes count
                         photo.likesCount = photoJSON.getJSONObject("likes").getInt("count");
+                        //user photo
+                        photo.userURL = photoJSON.getJSONObject("user").getString("profile_picture");
                         photos.add(photo);
 
                     }
